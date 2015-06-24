@@ -19,21 +19,21 @@ library(ggplot2)
 
 # 24510 is Baltimore, see plot2.R
 if(!exists("subsetNEI")){
-  subsetNEI  <- NEI[NEI$fips=="24510", ]
+  subsetNEI  <- NEI[NEI$fips == "24510", ]
 }
 
 # Aggregate by sum the total emissions by year
 aggregatedTotalByYearAndType <- aggregate(Emissions ~ year + type, subsetNEI, sum)
 
-png("plot3.png", width=640, height=480)
+png("plot3.png", width = 640, height = 480)
 
-g <- ggplot(aggregatedTotalByYearAndType,aes(factor(year),Emissions,fill=type)) +
-    geom_bar(stat="identity") +
+g <- ggplot(aggregatedTotalByYearAndType, aes(factor(year), Emissions, fill = type)) +
+    geom_bar(stat = "identity") +
     theme_bw() + 
-    guides(fill=FALSE) +
-    facet_grid(.~type,scales = "free",space="free") + 
-    labs(x="year", y=expression("Total PM"[2.5]*" Emission (Tons)")) + 
-    labs(title=expression("PM"[2.5]*" Emissions, Baltimore City 1999-2008 by Source Type"))
+    guides(fill = FALSE) +
+    facet_grid(.~type, scales = "free", space = "free") + 
+    labs(x = "year", y = expression("Total PM[2.5]* Emission (Tons)")) + 
+    labs(title = expression("PM[2.5]* Emissions, Baltimore City 1999-2008 by Source Type"))
 
 print(g)
 

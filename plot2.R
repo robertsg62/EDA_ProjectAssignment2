@@ -14,20 +14,20 @@ if(!exists("SCC")){
 }
 
 if(!exists("subsetNEI")){
-  subsetNEI  <- NEI[NEI$fips=="24510", ]
+  subsetNEI  <- NEI[NEI$fips == "24510", ]
 }
 
 # Aggregate by sum the total emissions by year
 aggregatedTotalByYear <- aggregate(Emissions ~ year, subsetNEI, sum)
 
-png('plot2.png', width=640, height=480)
+png("plot2.png", width = 640, height = 480)
 
 barplot(
-  height=aggregatedTotalByYear$Emissions, 
-  names.arg=aggregatedTotalByYear$year, 
-  xlab="years", 
-  ylab=expression('total PM'[2.5]*' emission'),
-  main=expression('Total PM'[2.5]*' in the Baltimore City, MD emissions at various years')
+  height = aggregatedTotalByYear$Emissions, 
+  names.arg = aggregatedTotalByYear$year, 
+  xlab = "years", 
+  ylab = expression("total PM[2.5]* emission"),
+  main = expression("Total PM2.5 Emissions From all Baltimore City Sources")
 )
 
 dev.off()

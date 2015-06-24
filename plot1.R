@@ -16,14 +16,14 @@ if(!exists("SCC")){
 # Aggregate by sum the total emissions by year
 aggregatedTotalByYear <- aggregate(Emissions ~ year, NEI, sum)
 
-png('plot1.png', width=640, height=480)
+png("plot1.png", width = 640, height = 480)
 
 barplot(
-  height=aggregatedTotalByYear$Emissions, 
-  names.arg=aggregatedTotalByYear$year, 
-  xlab="years", 
-  ylab=expression('total PM'[2.5]*' emission'),
-  main=expression('Total PM'[2.5]*' emissions at various years')
+  height = aggregatedTotalByYear$Emissions, 
+  names.arg = aggregatedTotalByYear$year, 
+  xlab = "years", 
+  ylab = expression("Total PM[2.5]* emission"),
+  main = expression("Total PM2.5 Emissions From All US Sources")
 )
 
 dev.off()
